@@ -4,7 +4,7 @@ Channel
     
 process test_github_secret {
     label 'mezzo'
-    container 'dovetailg/prod-report'
+    container 'quay.io/nextflow/bash'
 
     secret 'GitHub_token'
 
