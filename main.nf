@@ -7,7 +7,7 @@ process emmiter {
 
     script:
     """
-    test=aBigTest
+    export test=aBigTest
     """
 }
 
