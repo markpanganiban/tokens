@@ -18,10 +18,10 @@ process test_github_secret {
     secret 'GitHub_token'
 
     input:
-    env(test) from emmiter_test_ch
+    val(test) from emmiter_test_ch
     
     output:
-    env(token) into test_ch
+    val(token) into test_ch
 
     script:
     """
