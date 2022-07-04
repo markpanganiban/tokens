@@ -1,19 +1,10 @@
-process emmiter {
-    label 'minor'
-    container 'quay.io/nextflow/bash'
+Channel
+    .from('aBigTest')
+    .set{ emmiter_test_ch }
     
-    output:
-    env(test) into emmiter_test_ch
-
-    script:
-    """
-    test=aBigTest
-    """
-}
-
 process test_github_secret {
     label 'mezzo'
-    container 'quay.io/nextflow/bash'
+    container 'dovetailg/prod-report'
 
     secret 'GitHub_token'
 
@@ -25,6 +16,7 @@ process test_github_secret {
 
     script:
     """
-    token=\$(echo \$GitHub_token ${test})
+    token=\$(echo \$GitHub_token ${test}) \
     """
 }
+test_ch.view()
