@@ -1,24 +1,28 @@
 nextflow.enable.dsl=1
 
+process emmiter {    
+
+    output:
+    env(test) into emmiter_test_ch
+
+    script:
+    """
+    test=aBigTest
+    """
+}
+
 process test_github_secret {
 
     secret 'GitHub_token'
 
-    output:
-    env(token) into emmiter_test_ch
-
-    script:
-    """
-    token=\$(echo \$GitHub_token)
-    """
-}
-
-process emmiter {    
     input:
-    env(token) from emmiter_test_ch
+    env(test) from emmiter_test_ch
     
+    output:
+    env(token) into test_ch
+
     script:
     """
-    test=aBigTest
+    token=\$(echo \$GitHub_token \$test)
     """
 }
