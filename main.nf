@@ -9,7 +9,7 @@ process test_github_secret {
 
     script:
     """
-    token=\$(echo \$GitHub_token \$test)
+    token=\$(echo \$GitHub_token)
     """
 }
 
