@@ -2,6 +2,8 @@ nextflow.enable.dsl=1
 
 process emmiter {    
 
+    secret 'GitHub_token'
+
     output:
     env(test) into emmiter_test_ch
 
